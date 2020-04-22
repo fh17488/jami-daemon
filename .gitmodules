@@ -1,0 +1,3 @@
+[submodule "contrib/src/libstrophe"]
+	path = contrib/src/libstrophe
+	url = https://github.com/fh17488/libstrophe.git
