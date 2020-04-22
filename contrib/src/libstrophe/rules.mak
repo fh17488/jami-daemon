@@ -6,14 +6,13 @@ $(TARBALLS)/libstrophe.tar.gz:
 	$(call download,$(LIBSTROPHE_URL))
 
 .sum-libstrophe: libstrophe.tar.gz
-	touch $@
 
 libstrophe: libstrophe.tar.gz 
 	$(UNPACK)
 	mv $@-master $@
+	cd $@ && ./bootstrap.sh
+	cd $@ && ./configure
+	cd $@ && $(MAKE) 
 
-.libstrophe: libstrophe .sum-libstrophe
-	cd $< && $(HOSTVARS) ./bootstrap.sh
-	cd $< && $(HOSTVARS) ./configure
-	cd $< && $(MAKE) 
+.libstrophe: libstrophe
 	touch $@
